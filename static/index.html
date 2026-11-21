@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HAQfinder — Discover. Understand. Claim.</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1>HAQfinder</h1>
+      <p class="tagline">Discover. Understand. Claim.</p>
+      <p class="disclaimer">Informational only, not legal advice. "Likely eligible" is not a guarantee. Verify on the official portal before applying. We never ask for Aadhaar or bank account numbers.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <div id="alert" class="alert" role="alert" hidden></div>
+
+    <div class="tablist" role="tablist" aria-label="HAQfinder sections">
+      <button type="button" role="tab" id="tab-find" aria-controls="panel-find" aria-selected="true" tabindex="0">Find my schemes</button>
+      <button type="button" role="tab" id="tab-apps" aria-controls="panel-apps" aria-selected="false" tabindex="-1">My applications</button>
+      <button type="button" role="tab" id="tab-reminders" aria-controls="panel-reminders" aria-selected="false" tabindex="-1">Reminders</button>
+    </div>
+
+    <!-- Find tab -->
+    <section id="panel-find" class="panel" role="tabpanel" aria-labelledby="tab-find">
+      <form id="find-form" novalidate>
+        <label for="situation" class="field-label">Describe your situation in your own words (English or Hinglish)</label>
+        <textarea id="situation" class="situation" rows="6" placeholder="Main Uttar Pradesh mein rehta hoon. Main B.Tech kar raha hoon. Mere father farmer hain. Income kam hai."></textarea>
+
+        <div class="row-actions">
+          <button type="button" id="voice-btn" class="btn btn-secondary" aria-pressed="false" hidden>🎤 Voice input</button>
+        </div>
+
+        <details id="extra" class="extra">
+          <summary>Add exact details (optional)</summary>
+          <div class="grid">
+            <div class="field">
+              <label for="f-state">State</label>
+              <input type="text" id="f-state" autocomplete="off">
+            </div>
+            <div class="field">
+              <label for="f-age">Age</label>
+              <input type="number" id="f-age" min="0" max="150" inputmode="numeric">
+            </div>
+            <div class="field">
+              <label for="f-income">Annual income (INR)</label>
+              <input type="number" id="f-income" min="0" inputmode="numeric">
+            </div>
+            <div class="field">
+              <label for="f-occupation">Occupation</label>
+              <select id="f-occupation">
+                <option value="any">Any</option>
+                <option value="student">Student</option>
+                <option value="farmer">Farmer</option>
+                <option value="salaried">Salaried</option>
+                <option value="self-employed">Self-employed</option>
+                <option value="unemployed">Unemployed</option>
+                <option value="senior">Senior citizen</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="f-category">Category</label>
+              <select id="f-category">
+                <option value="any">Any</option>
+                <option value="General">General</option>
+                <option value="OBC">OBC</option>
+                <option value="SC">SC</option>
+                <option value="ST">ST</option>
+                <option value="EWS">EWS</option>
+                <option value="Minority">Minority</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="f-rural">Rural?</label>
+              <select id="f-rural">
+                <option value="any">Any</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="f-gender">Gender</label>
+              <select id="f-gender">
+                <option value="any">Any</option>
+                <option value="female">Female</option>
+                <option value="male">Male</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="field field-check">
+              <input type="checkbox" id="f-disability">
+              <label for="f-disability">I have a disability</label>
+            </div>
+          </div>
+        </details>
+
+        <div class="row-actions">
+          <button type="submit" id="find-btn" class="btn btn-primary">Find schemes</button>
+        </div>
+      </form>
+
+      <section id="questions-box" class="questions" aria-labelledby="questions-title" hidden>
+        <h2 id="questions-title">Questions that could improve your results</h2>
+        <ul id="questions-list"></ul>
+      </section>
+
+      <div id="results" class="results"></div>
+    </section>
+
+    <!-- Applications tab -->
+    <section id="panel-apps" class="panel" role="tabpanel" aria-labelledby="tab-apps" hidden>
+      <p id="apps-empty" class="muted" hidden>No applications tracked yet. Find schemes and click "Track this application".</p>
+      <div class="table-wrap">
+        <table id="apps-table" hidden>
+          <caption>Your tracked applications</caption>
+          <thead>
+            <tr>
+              <th scope="col">Scheme</th>
+              <th scope="col">Status</th>
+              <th scope="col">Notes</th>
+              <th scope="col">Deadline</th>
+              <th scope="col">Added</th>
+              <th scope="col"><span class="visually-hidden">Actions</span></th>
+            </tr>
+          </thead>
+          <tbody id="apps-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Reminders tab -->
+    <section id="panel-reminders" class="panel" role="tabpanel" aria-labelledby="tab-reminders" hidden>
+      <h2>Upcoming and overdue deadlines</h2>
+      <p id="reminders-empty" class="muted" hidden>No deadlines within the next 14 days.</p>
+      <ul id="reminders-list" class="reminders"></ul>
+    </section>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>

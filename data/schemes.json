@@ -1,0 +1,248 @@
+{
+  "schemes": [
+    {
+      "id": "pm-scholarship-scheme",
+      "name": "PM Scholarship Scheme",
+      "category": "education",
+      "description": "Central scholarship for wards of ex-servicemen, ex-coast guard personnel and CAPF/Assam Rifles personnel pursuing undergraduate and postgraduate professional or technical courses.",
+      "state": null,
+      "eligibility": {
+        "education_in": ["Class 12 pass"],
+        "income_max": 800000
+      },
+      "required_documents": [
+        "Proof of parent/guardian service or dependency",
+        "Class 12 marksheet",
+        "Admission proof from a recognised institution",
+        "Income certificate"
+      ],
+      "application_steps": [
+        "Register on the National Scholarship Portal (scholarships.gov.in)",
+        "Fill the application form for the PM Scholarship Scheme",
+        "Upload the required documents",
+        "Submit and track the application status on the portal"
+      ],
+      "deadline": null,
+      "official_link": "https://www.scholarships.gov.in",
+      "source_url": "https://www.scholarships.gov.in",
+      "last_verified": "2026-01-15",
+      "verification_note": "Criteria summarized from public sources; verify on official portal before applying"
+    },
+    {
+      "id": "nsp-post-matric-scholarship-sc-st-obc",
+      "name": "National Scholarship Portal - Post-Matric Scholarship for SC/ST/OBC",
+      "category": "education",
+      "description": "Central sector and centrally sponsored scholarships for SC, ST and OBC students studying at post-matriculation / post-secondary level, delivered through the National Scholarship Portal.",
+      "state": null,
+      "eligibility": {
+        "category_in": ["SC", "ST", "OBC"],
+        "education_in": ["Class 10 pass", "Class 12 pass", "Graduate"],
+        "income_max": 250000
+      },
+      "required_documents": [
+        "Caste certificate",
+        "Income certificate",
+        "Previous year marksheet",
+        "Admission proof from a recognised institution"
+      ],
+      "application_steps": [
+        "Register on the National Scholarship Portal (scholarships.gov.in)",
+        "Select the post-matric scholarship for SC/ST/OBC students",
+        "Fill the application form and upload the documents",
+        "Verify the application at the institute and state level, then track status online"
+      ],
+      "deadline": null,
+      "official_link": "https://scholarships.gov.in",
+      "source_url": "https://scholarships.gov.in",
+      "last_verified": "2026-01-15",
+      "verification_note": "Criteria summarized from public sources; verify on official portal before applying"
+    },
+    {
+      "id": "pm-kisan",
+      "name": "PM-KISAN (Pradhan Mantri Kisan Samman Nidhi)",
+      "category": "agriculture",
+      "description": "Direct income support of Rs 6,000 per year in three instalments to eligible landholding farmer families.",
+      "state": null,
+      "eligibility": {
+        "occupation_in": ["farmer"]
+      },
+      "required_documents": [
+        "Land ownership records (Khatauni / land record)",
+        "Identity proof",
+        "Mobile number linked to the application"
+      ],
+      "application_steps": [
+        "Visit pmkisan.gov.in and click on New Farmer Registration",
+        "Enter the mobile number, state, and land details",
+        "Submit the form and note the registration number",
+        "Check status on the portal or through the local Common Service Centre"
+      ],
+      "deadline": null,
+      "official_link": "https://pmkisan.gov.in",
+      "source_url": "https://pmkisan.gov.in",
+      "last_verified": "2026-01-15",
+      "verification_note": "Criteria summarized from public sources; verify on official portal before applying"
+    },
+    {
+      "id": "ayushman-bharat-pm-jay",
+      "name": "Ayushman Bharat - Pradhan Mantri Jan Arogya Yojana (PM-JAY)",
+      "category": "health",
+      "description": "Health insurance cover of Rs 5 lakh per family per year for secondary and tertiary hospitalisation for eligible families identified in the SECC database and urban occupational categories.",
+      "state": null,
+      "eligibility": {
+        "income_max": 500000
+      },
+      "required_documents": [
+        "Identity proof",
+        "Family details / ration card",
+        "Income certificate or SECC-listed proof"
+      ],
+      "application_steps": [
+        "Check eligibility at pmjay.gov.in or call the helpline",
+        "Visit an empanelled hospital or Ayushman Mitra help desk",
+        "Get your e-card generated after verification",
+        "Use the e-card for cashless treatment at empanelled hospitals"
+      ],
+      "deadline": null,
+      "official_link": "https://pmjay.gov.in",
+      "source_url": "https://pmjay.gov.in",
+      "last_verified": "2026-01-15",
+      "verification_note": "Criteria summarized from public sources; verify on official portal before applying"
+    },
+    {
+      "id": "indira-gandhi-national-old-age-pension",
+      "name": "Indira Gandhi National Old Age Pension Scheme (IGNOAPS)",
+      "category": "pension",
+      "description": "Monthly central pension for destitute persons aged 60 years and above who are below the poverty line. State governments may add top-ups.",
+      "state": null,
+      "eligibility": {
+        "age_min": 60
+      },
+      "required_documents": [
+        "Age proof",
+        "BPL / poverty status proof",
+        "Identity proof",
+        "Residence proof"
+      ],
+      "application_steps": [
+        "Collect the application form from the Gram Panchayat, ward office or Block office",
+        "Submit the form with the required documents",
+        "Verification is done by the local authority",
+        "Pension is released to the beneficiary after sanction"
+      ],
+      "deadline": null,
+      "official_link": "https://nsap.nic.in",
+      "source_url": "https://nsap.nic.in",
+      "last_verified": "2026-01-15",
+      "verification_note": "Criteria summarized from public sources; verify on official portal before applying"
+    },
+    {
+      "id": "pm-awas-yojana-gramin",
+      "name": "Pradhan Mantri Awas Yojana - Gramin (PMAY-G)",
+      "category": "housing",
+      "description": "Financial assistance for construction of a pucca house for eligible rural households who are houseless or live in kutcha or dilapidated houses.",
+      "state": null,
+      "eligibility": {
+        "is_rural": true
+      },
+      "required_documents": [
+        "Identity proof",
+        "Proof of residence in a listed village",
+        "Photograph of the existing house"
+      ],
+      "application_steps": [
+        "Check the Awaas+ list for your village at pmayg.nic.in",
+        "Get your name verified by the Gram Panchayat",
+        "Complete geo-tagging and house construction as per instalment stages",
+        "Instalments are released in stages as construction progresses"
+      ],
+      "deadline": null,
+      "official_link": "https://pmayg.nic.in",
+      "source_url": "https://pmayg.nic.in",
+      "last_verified": "2026-01-15",
+      "verification_note": "Criteria summarized from public sources; verify on official portal before applying"
+    },
+    {
+      "id": "pm-fasal-bima-yojana",
+      "name": "Pradhan Mantri Fasal Bima Yojana (PMFBY)",
+      "category": "agriculture",
+      "description": "Crop insurance scheme providing financial support to farmers against crop loss due to natural calamities, pests and diseases.",
+      "state": null,
+      "eligibility": {
+        "occupation_in": ["farmer"],
+        "is_rural": true
+      },
+      "required_documents": [
+        "Land records (Khatauni / land record)",
+        "Sowing certificate or declaration",
+        "Identity proof"
+      ],
+      "application_steps": [
+        "Visit pmfby.gov.in or the nearest bank / Common Service Centre",
+        "Enrol for the crop season before the cut-off date for your crop",
+        "Pay the farmer's share of premium",
+        "Report crop loss within the prescribed time through the app or helpline"
+      ],
+      "deadline": null,
+      "official_link": "https://pmfby.gov.in",
+      "source_url": "https://pmfby.gov.in",
+      "last_verified": "2026-01-15",
+      "verification_note": "Criteria summarized from public sources; verify on official portal before applying"
+    },
+    {
+      "id": "pm-mudra-yojana",
+      "name": "Pradhan Mantri MUDRA Yojana",
+      "category": "finance",
+      "description": "Collateral-free loans up to Rs 10 lakh for non-corporate, non-farm micro and small enterprises, in Shishu, Kishore and Tarun categories.",
+      "state": null,
+      "eligibility": {
+        "occupation_in": ["self-employed", "small business", "entrepreneur", "shopkeeper", "artisan"]
+      },
+      "required_documents": [
+        "Identity proof",
+        "Residence proof",
+        "Business plan or proof of business activity",
+        "Quotations for machinery or stock (if applicable)"
+      ],
+      "application_steps": [
+        "Visit any bank, NBFC or MFI branch offering MUDRA loans",
+        "Fill the MUDRA loan application form",
+        "Submit documents and business details",
+        "Loan is sanctioned after lender appraisal"
+      ],
+      "deadline": null,
+      "official_link": "https://www.mudra.org.in",
+      "source_url": "https://www.mudra.org.in",
+      "last_verified": "2026-01-15",
+      "verification_note": "Criteria summarized from public sources; verify on official portal before applying"
+    },
+    {
+      "id": "pm-vidyalaxmi",
+      "name": "PM Vidyalaxmi Education Loan Scheme",
+      "category": "education",
+      "description": "Single-window portal for collateral-free education loans for students admitted to recognised higher education institutions, with interest subsidy for eligible families.",
+      "state": null,
+      "eligibility": {
+        "education_in": ["Class 12 pass", "Graduate", "Post-graduate"],
+        "income_max": 800000
+      },
+      "required_documents": [
+        "Identity proof",
+        "Admission proof from a recognised institution",
+        "Income certificate of parent/guardian",
+        "Previous year marksheet"
+      ],
+      "application_steps": [
+        "Register and apply on the PM Vidyalaxmi portal (vidyalakshmi.co.in)",
+        "Select up to three recognised institutions and loan options",
+        "Upload documents and submit the application",
+        "Lender processes the loan application and sanctions the loan"
+      ],
+      "deadline": null,
+      "official_link": "https://www.vidyalakshmi.co.in",
+      "source_url": "https://www.vidyalakshmi.co.in",
+      "last_verified": "2026-01-15",
+      "verification_note": "Criteria summarized from public sources; verify on official portal before applying"
+    }
+  ]
+}
