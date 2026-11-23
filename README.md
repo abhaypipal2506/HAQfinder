@@ -4,11 +4,29 @@
 
 HAQfinder helps Indian citizens discover public welfare schemes they may be eligible for, understand the criteria in plain language, and prepare to claim them. It is part of the ACE Builders Hackathon 2026, Problem Statement 5: Citizens and Public Services.
 
-## Features (MVP scope)
+## Features
 
-- A curated scheme catalogue in `data/schemes.json` (central and state schemes).
-- An eligibility engine that compares a citizen profile against structured scheme conditions and labels results as "Likely eligible", "Possibly eligible" or "Not eligible" with reasons.
-- A FastAPI backend (`app/main.py`) serving the catalogue and eligibility checks.
+- A searchable, filterable, paginated scheme catalogue in `data/schemes.json`, including central and Uttar Pradesh records. The catalogue currently contains 19 records; several new entries are explicitly marked as needing eligibility-detail review.
+- A conservative eligibility engine. Missing profile facts and unverified criteria remain unknown; a match is not an entitlement decision.
+- Account registration/login with salted PBKDF2 password hashes and server-side, expiring SQLite sessions. Session cookies are HTTP-only and same-site.
+- Database-backed profiles, saved schemes, application status, document checklists, notes, deadlines and in-app reminders.
+- An API-driven responsive frontend, with optional English/Hindi browser speech recognition.
+- The original FastAPI matching and application routes remain available. Existing SQLite application rows are preserved by additive schema migrations.
+
+The SQLite database path defaults to `data/haqfinder.db`; set `HAQFINDER_DB` to use another file. Do not store Aadhaar, PAN, bank details, or other identity numbers in the profile.
+
+### Scheme verification
+
+The catalogue does not claim that every record's eligibility details have been verified. New portal records have empty eligibility, benefits and document fields until those details are checked. Their `verification_status`, `data_confidence`, `link_checked_at`, and `verification_note` fields distinguish a reachable official destination from verified scheme rules. `SOURCE_UNAVAILABLE` means a source could not be reached during its recorded check. Always confirm current rules with the official authority.
+
+### Hero video
+
+`static/community.mp4` is a locally stored, muted 12-second montage, with a local poster fallback at `static/community-poster.jpg`. The footage is from Pexels and is used under the [Pexels license](https://www.pexels.com/license/):
+
+- [Atul Saini — farmer carrying a load in farmland](https://www.pexels.com/video/man-carrying-a-bag-while-walking-4684807/)
+- [Samar L. — college campus in India](https://www.pexels.com/video/vibrant-college-campus-walkway-in-india-36878014/)
+- [Mikhail Nilov — Indian woman working on a laptop](https://www.pexels.com/video/woman-using-a-laptop-9198479/)
+- [Daily views — women vendors at a market stall](https://www.pexels.com/video/outdoor-market-stall-with-women-vendors-39916216/)
 
 ## Windows setup
 
@@ -39,17 +57,21 @@ The file is a JSON object with a single key, `schemes`, whose value is a list of
 | --- | --- | --- |
 | `id` | string | Unique slug for the scheme (e.g. `pm-kisan`). |
 | `name` | string | Human-readable scheme name. |
-| `category` | string | One of: `education`, `agriculture`, `health`, `housing`, `pension`, `finance`, `employment`. |
+| `category` | string | Primary category. Additional filter categories may be listed in `categories`. |
 | `description` | string | Short plain-language summary of the scheme. |
 | `state` | string or null | `null` for central schemes, otherwise the state name. |
+| `government_level` | string | `central` or `state`, when recorded. |
+| `department` | string | Responsible department, when recorded. |
 | `eligibility` | object | Structured conditions (see below). Keys are optional. |
+| `benefits`, `eligibility_criteria` | lists | Officially sourced detail when available; empty when not yet reviewed. |
 | `required_documents` | list of strings | Documents usually needed to apply. |
 | `application_steps` | list of strings | Ordered steps to apply. |
 | `deadline` | string or null | `YYYY-MM-DD`, or `null` if no fixed deadline is known. |
-| `official_link` | string | Official portal or landing page. |
+| `official_link`, `official_information_url`, `application_url` | strings | Official destinations. Application links fall back to the official information page when a separate application URL is not known. |
 | `source_url` | string | Public page the criteria were summarized from. |
-| `last_verified` | string | Date the entry was last checked, `YYYY-MM-DD`. |
-| `verification_note` | string | Standard note: "Criteria summarized from public sources; verify on official portal before applying". |
+| `verification_status` | string | Review state from the ingestion pipeline; do not mark a record fully verified without checking its details. |
+| `link_checked_at`, `last_verified` | date or null | Link check date and scheme-detail review date are kept separate. |
+| `verification_note` | string | What was and was not checked. |
 
 ### Eligibility conditions
 

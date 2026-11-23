@@ -53,11 +53,10 @@ def test_rural_65_year_old_gets_old_age_pension():
 
 
 # 3. Urban high-income salaried person: low-income schemes must not match
-def test_urban_high_income_salaried_not_matched_for_low_income_schemes():
+def test_urban_high_income_salaried_does_not_assume_pm_jay_income_cutoff():
     _, by_id = _run("Main Delhi mein urban area mein naukri karta hoon, salary 25 lakh saalana, age 30")
     for scheme_id in [
         "nsp-post-matric-scholarship-sc-st-obc",
-        "ayushman-bharat-pm-jay",
         "pm-scholarship-scheme",
         "pm-vidyalaxmi",
         "pm-kisan",
@@ -65,6 +64,7 @@ def test_urban_high_income_salaried_not_matched_for_low_income_schemes():
         "pm-awas-yojana-gramin",
     ]:
         _assert_not_matched(by_id, scheme_id)
+    assert _status(by_id, "ayushman-bharat-pm-jay") == "possibly_eligible"
 
 
 # 4. SC student from Bihar

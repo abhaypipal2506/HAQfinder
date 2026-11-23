@@ -1,144 +1,228 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HAQfinder — Discover. Understand. Claim.</title>
-  <link rel="stylesheet" href="/styles.css">
-</head>
-<body>
-  <header class="site-header">
-    <div class="container">
-      <h1>HAQfinder</h1>
-      <p class="tagline">Discover. Understand. Claim.</p>
-      <p class="disclaimer">Informational only, not legal advice. "Likely eligible" is not a guarantee. Verify on the official portal before applying. We never ask for Aadhaar or bank account numbers.</p>
-    </div>
-  </header>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#14251d">
+    <meta name="description" content="Discover Indian government schemes, understand eligibility and keep your application journey organised.">
+    <title>HAQfinder — Your rights, within reach</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/styles.css">
+    <script src="/static/app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <a class="brand" href="#" aria-label="HAQfinder home">
+        <span class="brand-mark" aria-hidden="true">h.</span>
+        <span>HAQ<span class="brand-light">finder</span></span>
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="#directory">Discover</a>
+        <a href="#match">My eligibility</a>
+        <a href="#workspace">My journey</a>
+      </nav>
+      <div class="account-actions">
+        <span class="account-name" id="account-name" hidden></span>
+        <button class="button button-outline button-small" id="login-open" type="button">Log in</button>
+        <button class="button button-lime button-small" id="logout-button" type="button" hidden>Log out</button>
+      </div>
+    </header>
 
-  <main class="container">
-    <div id="alert" class="alert" role="alert" hidden></div>
-
-    <div class="tablist" role="tablist" aria-label="HAQfinder sections">
-      <button type="button" role="tab" id="tab-find" aria-controls="panel-find" aria-selected="true" tabindex="0">Find my schemes</button>
-      <button type="button" role="tab" id="tab-apps" aria-controls="panel-apps" aria-selected="false" tabindex="-1">My applications</button>
-      <button type="button" role="tab" id="tab-reminders" aria-controls="panel-reminders" aria-selected="false" tabindex="-1">Reminders</button>
-    </div>
-
-    <!-- Find tab -->
-    <section id="panel-find" class="panel" role="tabpanel" aria-labelledby="tab-find">
-      <form id="find-form" novalidate>
-        <label for="situation" class="field-label">Describe your situation in your own words (English or Hinglish)</label>
-        <textarea id="situation" class="situation" rows="6" placeholder="Main Uttar Pradesh mein rehta hoon. Main B.Tech kar raha hoon. Mere father farmer hain. Income kam hai."></textarea>
-
-        <div class="row-actions">
-          <button type="button" id="voice-btn" class="btn btn-secondary" aria-pressed="false" hidden>🎤 Voice input</button>
-        </div>
-
-        <details id="extra" class="extra">
-          <summary>Add exact details (optional)</summary>
-          <div class="grid">
-            <div class="field">
-              <label for="f-state">State</label>
-              <input type="text" id="f-state" autocomplete="off">
-            </div>
-            <div class="field">
-              <label for="f-age">Age</label>
-              <input type="number" id="f-age" min="0" max="150" inputmode="numeric">
-            </div>
-            <div class="field">
-              <label for="f-income">Annual income (INR)</label>
-              <input type="number" id="f-income" min="0" inputmode="numeric">
-            </div>
-            <div class="field">
-              <label for="f-occupation">Occupation</label>
-              <select id="f-occupation">
-                <option value="any">Any</option>
-                <option value="student">Student</option>
-                <option value="farmer">Farmer</option>
-                <option value="salaried">Salaried</option>
-                <option value="self-employed">Self-employed</option>
-                <option value="unemployed">Unemployed</option>
-                <option value="senior">Senior citizen</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="f-category">Category</label>
-              <select id="f-category">
-                <option value="any">Any</option>
-                <option value="General">General</option>
-                <option value="OBC">OBC</option>
-                <option value="SC">SC</option>
-                <option value="ST">ST</option>
-                <option value="EWS">EWS</option>
-                <option value="Minority">Minority</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="f-rural">Rural?</label>
-              <select id="f-rural">
-                <option value="any">Any</option>
-                <option value="yes">Yes</option>
-                <option value="no">No</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="f-gender">Gender</label>
-              <select id="f-gender">
-                <option value="any">Any</option>
-                <option value="female">Female</option>
-                <option value="male">Male</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
-            <div class="field field-check">
-              <input type="checkbox" id="f-disability">
-              <label for="f-disability">I have a disability</label>
-            </div>
+    <main id="main">
+      <section class="hero" aria-labelledby="hero-title">
+        <video class="hero-video" id="hero-video" autoplay muted loop playsinline preload="metadata" poster="/static/community-poster.jpg" aria-hidden="true">
+          <source src="/static/community.mp4" type="video/mp4">
+        </video>
+        <div class="hero-shade"></div>
+        <div class="hero-content">
+          <p class="eyebrow"><span class="eyebrow-line"></span> A clearer path to public support</p>
+          <h1 id="hero-title">Your rights.<br><em>Within reach.</em></h1>
+          <p class="hero-copy">Find government schemes that may fit your life. Understand what is known, what still needs checking, and where to take your next step.</p>
+          <div class="hero-actions">
+            <a class="button button-lime" href="#match">Explore my eligibility <span aria-hidden="true">↗</span></a>
+            <a class="text-link light-link" href="#directory">Browse the directory <span aria-hidden="true">↓</span></a>
           </div>
-        </details>
-
-        <div class="row-actions">
-          <button type="submit" id="find-btn" class="btn btn-primary">Find schemes</button>
+          <p class="hero-note">Free to explore · Private by design · Official sources linked</p>
         </div>
-      </form>
-
-      <section id="questions-box" class="questions" aria-labelledby="questions-title" hidden>
-        <h2 id="questions-title">Questions that could improve your results</h2>
-        <ul id="questions-list"></ul>
+        <div class="hero-caption"><span class="live-dot"></span> PEOPLE FIRST. ALWAYS.</div>
+        <div class="hero-index">01 <span>/</span> 04</div>
       </section>
 
-      <div id="results" class="results"></div>
-    </section>
+      <section class="intro-band" aria-label="How HAQfinder works">
+        <p>PUBLIC SUPPORT<br>SHOULD BE <span>UNDERSTANDABLE.</span></p>
+        <div class="intro-steps">
+          <span><b>01</b> Tell us what matters</span>
+          <span><b>02</b> See possible matches</span>
+          <span><b>03</b> Take your next step</span>
+        </div>
+      </section>
 
-    <!-- Applications tab -->
-    <section id="panel-apps" class="panel" role="tabpanel" aria-labelledby="tab-apps" hidden>
-      <p id="apps-empty" class="muted" hidden>No applications tracked yet. Find schemes and click "Track this application".</p>
-      <div class="table-wrap">
-        <table id="apps-table" hidden>
-          <caption>Your tracked applications</caption>
-          <thead>
-            <tr>
-              <th scope="col">Scheme</th>
-              <th scope="col">Status</th>
-              <th scope="col">Notes</th>
-              <th scope="col">Deadline</th>
-              <th scope="col">Added</th>
-              <th scope="col"><span class="visually-hidden">Actions</span></th>
-            </tr>
-          </thead>
-          <tbody id="apps-body"></tbody>
-        </table>
+      <section class="section directory-section" id="directory" aria-labelledby="directory-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow eyebrow-dark">THE SCHEME DIRECTORY</p>
+            <h2 id="directory-title">Support, made <em>findable.</em></h2>
+          </div>
+          <p class="section-lede">Search the current catalogue by name, need, or benefit. Check each scheme's source and verification notes before you act.</p>
+        </div>
+        <div class="search-panel">
+          <label class="sr-only" for="scheme-search">Search government schemes</label>
+          <span class="search-symbol" aria-hidden="true">⌕</span>
+          <input id="scheme-search" type="search" placeholder="Try “farmer support” or “scholarship”" autocomplete="off">
+          <button class="icon-button" id="search-mic" type="button" aria-label="Search by voice" title="Search by voice">⌁</button>
+          <button class="button button-dark button-small" id="search-clear" type="button">Clear</button>
+        </div>
+        <div class="filter-tools">
+          <div class="category-pills" id="category-pills" aria-label="Filter by category"></div>
+          <label class="state-filter">State
+            <select id="state-filter" aria-label="Filter by state">
+              <option value="">All states</option>
+              <option value="Central">Central schemes</option>
+            </select>
+          </label>
+        </div>
+        <p class="live-message" id="directory-message" role="status" aria-live="polite"></p>
+        <div class="scheme-grid" id="scheme-grid" aria-live="polite"></div>
+        <nav class="pagination" id="pagination" aria-label="Scheme pages" hidden></nav>
+      </section>
+
+      <section class="match-section" id="match" aria-labelledby="match-title">
+        <div class="match-intro">
+          <p class="eyebrow">PERSONALISED DISCOVERY</p>
+          <h2 id="match-title">Start with <em>your story.</em></h2>
+          <p>Share only what you choose. We compare your answers with the criteria in our catalogue. Missing details stay unknown—not assumed.</p>
+          <div class="match-assurance"><span aria-hidden="true">✳</span> No Aadhaar, PAN or bank details requested.</div>
+        </div>
+        <div class="match-form-wrap">
+          <form id="match-form">
+            <div class="form-heading"><span>YOUR PROFILE</span><span>OPTIONAL · EDIT ANYTIME</span></div>
+            <label class="field-label" for="situation">In your own words, what support are you looking for?</label>
+            <div class="voice-field">
+              <textarea id="situation" name="description" rows="3" placeholder="For example: I am a student in Bihar looking for help with college fees." required maxlength="2000"></textarea>
+              <button class="button button-outline button-small" id="profile-mic" type="button" aria-label="Describe your situation by voice">Speak</button>
+            </div>
+            <div class="voice-language">
+              <label for="voice-language">Voice language</label>
+              <select id="voice-language">
+                <option value="en-IN">English (India)</option>
+                <option value="hi-IN">हिन्दी</option>
+              </select>
+              <span id="voice-note">Voice input depends on browser support.</span>
+            </div>
+            <div class="profile-fields">
+              <label>Age <input id="profile-age" type="number" min="0" max="120" inputmode="numeric" placeholder="e.g. 28"></label>
+              <label>State <input id="profile-state" type="text" list="state-options" maxlength="100" placeholder="Your state"></label>
+              <label>District <input id="profile-district" type="text" maxlength="100" placeholder="Your district"></label>
+              <label>Occupation <input id="profile-occupation" type="text" maxlength="100" placeholder="e.g. farmer"></label>
+              <label>Annual family income (₹) <input id="profile-income" type="number" min="0" inputmode="numeric" placeholder="Optional"></label>
+              <label>Social category
+                <select id="profile-category">
+                  <option value="">Prefer not to say</option>
+                  <option>SC</option><option>ST</option><option>OBC</option><option>EWS</option><option>General</option><option>Minority</option>
+                </select>
+              </label>
+              <label>Education <input id="profile-education" type="text" maxlength="100" placeholder="e.g. Class 12"></label>
+              <label>Gender <input id="profile-gender" type="text" maxlength="50" placeholder="Optional"></label>
+              <label>Residence
+                <select id="profile-rural">
+                  <option value="">Prefer not to say</option>
+                  <option value="true">Rural</option><option value="false">Urban</option>
+                </select>
+              </label>
+              <label>Disability status
+                <select id="profile-disability">
+                  <option value="">Prefer not to say</option>
+                  <option value="true">Person with disability</option><option value="false">No disability</option>
+                </select>
+              </label>
+            </div>
+            <label class="field-label" for="profile-family">Family situation or other context <span>(optional)</span></label>
+            <textarea id="profile-family" rows="2" maxlength="1000" placeholder="For example: caring for an older parent"></textarea>
+            <div class="form-actions">
+              <button class="button button-lime" id="match-submit" type="submit">Find relevant schemes <span aria-hidden="true">↗</span></button>
+              <span class="save-hint" id="profile-save-hint">Sign in to save your profile.</span>
+            </div>
+          </form>
+          <div class="match-results" id="match-results" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <section class="workspace-section section" id="workspace" aria-labelledby="workspace-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow eyebrow-dark">YOUR PERSONAL SPACE</p>
+            <h2 id="workspace-title">Keep your next steps <em>in view.</em></h2>
+          </div>
+          <p class="section-lede">Save schemes to your account, organise applications and see upcoming deadlines. Reminders appear here when you return—no push or email notifications are claimed.</p>
+        </div>
+        <div class="workspace-grid">
+          <section class="workspace-panel" aria-labelledby="saved-title">
+            <div class="panel-heading"><h3 id="saved-title">Saved schemes</h3><span class="panel-count" id="saved-count">—</span></div>
+            <div id="saved-schemes" class="saved-list"><p class="empty-note">Log in to keep a personal list of schemes.</p></div>
+          </section>
+          <section class="workspace-panel tracker-panel" aria-labelledby="tracker-title">
+            <div class="panel-heading"><h3 id="tracker-title">Application tracker</h3><span class="panel-count" id="application-count">—</span></div>
+            <div id="reminders" class="reminders-list"></div>
+            <div id="applications" class="application-list"><p class="empty-note">Your tracked applications will appear here.</p></div>
+          </section>
+        </div>
+      </section>
+
+      <section class="closing-band">
+        <p class="eyebrow">DISCOVER. UNDERSTAND. CLAIM.</p>
+        <p>Information is a right.<br><em>Clarity is a start.</em></p>
+        <a class="text-link light-link" href="#directory">Return to the directory <span aria-hidden="true">↑</span></a>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a class="brand" href="#"><span class="brand-mark" aria-hidden="true">h.</span><span>HAQ<span class="brand-light">finder</span></span></a>
+      <p>Independent discovery tool. Not an official government service or a guarantee of eligibility.</p>
+      <a href="https://www.india.gov.in/" target="_blank" rel="noopener noreferrer">National Portal of India ↗</a>
+    </footer>
+
+    <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+    <dialog class="app-dialog auth-dialog" id="auth-dialog" aria-labelledby="auth-title">
+      <button class="dialog-close" type="button" data-dialog-close aria-label="Close">×</button>
+      <p class="eyebrow eyebrow-dark">YOUR HAQfinder ACCOUNT</p>
+      <h2 id="auth-title">Welcome back.</h2>
+      <div class="auth-switch" role="tablist" aria-label="Account action">
+        <button type="button" class="auth-tab is-active" data-auth-mode="login" role="tab" aria-selected="true">Log in</button>
+        <button type="button" class="auth-tab" data-auth-mode="register" role="tab" aria-selected="false">Create account</button>
       </div>
-    </section>
+      <form id="login-form" class="auth-form">
+        <label>Email <input name="email" type="email" autocomplete="email" maxlength="254" required></label>
+        <label>Password <input name="password" type="password" autocomplete="current-password" maxlength="128" required></label>
+        <button class="button button-lime" type="submit">Log in securely <span aria-hidden="true">↗</span></button>
+      </form>
+      <form id="register-form" class="auth-form" hidden>
+        <label>Your name <input name="full_name" type="text" autocomplete="name" minlength="2" maxlength="100" required></label>
+        <label>Email <input name="email" type="email" autocomplete="email" maxlength="254" required></label>
+        <label>Password <input name="password" type="password" autocomplete="new-password" minlength="10" maxlength="128" required></label>
+        <p class="form-footnote">Passwords are securely hashed. We never ask for identity or bank numbers.</p>
+        <button class="button button-lime" type="submit">Create your account <span aria-hidden="true">↗</span></button>
+      </form>
+      <p class="dialog-message" id="auth-message" role="status" aria-live="polite"></p>
+    </dialog>
 
-    <!-- Reminders tab -->
-    <section id="panel-reminders" class="panel" role="tabpanel" aria-labelledby="tab-reminders" hidden>
-      <h2>Upcoming and overdue deadlines</h2>
-      <p id="reminders-empty" class="muted" hidden>No deadlines within the next 14 days.</p>
-      <ul id="reminders-list" class="reminders"></ul>
-    </section>
-  </main>
+    <dialog class="app-dialog detail-dialog" id="scheme-dialog" aria-labelledby="detail-title">
+      <button class="dialog-close" type="button" data-dialog-close aria-label="Close scheme details">×</button>
+      <div id="scheme-detail"><p class="loading-note">Loading scheme details…</p></div>
+    </dialog>
 
-  <script src="/app.js"></script>
-</body>
+    <datalist id="state-options">
+      <option value="Andhra Pradesh"><option value="Arunachal Pradesh"><option value="Assam"><option value="Bihar">
+      <option value="Chhattisgarh"><option value="Goa"><option value="Gujarat"><option value="Haryana">
+      <option value="Himachal Pradesh"><option value="Jharkhand"><option value="Karnataka"><option value="Kerala">
+      <option value="Madhya Pradesh"><option value="Maharashtra"><option value="Manipur"><option value="Meghalaya">
+      <option value="Mizoram"><option value="Nagaland"><option value="Odisha"><option value="Punjab">
+      <option value="Rajasthan"><option value="Sikkim"><option value="Tamil Nadu"><option value="Telangana">
+      <option value="Tripura"><option value="Uttar Pradesh"><option value="Uttarakhand"><option value="West Bengal">
+      <option value="Delhi">
+    </datalist>
+  </body>
 </html>
